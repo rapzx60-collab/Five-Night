@@ -1,9 +1,9 @@
 {
   "name": "rapzz-store",
   "version": "1.0.0",
-  "main": "api/index.js",
+  "main": "server.js",
   "scripts": {
-    "start": "node api/index.js"
+    "start": "node server.js"
   },
   "dependencies": {
     "cors": "^2.8.5",
