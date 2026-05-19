@@ -26,8 +26,8 @@ const upload = multer({
 
 /* FILE */
 
-const STOCK_FILE = '/tmp/stocks.json';
-const VOUCHER_FILE = '/tmp/voucher.json';
+const STOCK_FILE = 'stocks.json';
+const VOUCHER_FILE = 'voucher.json';
 
 /* AUTO CREATE */
 
@@ -56,7 +56,7 @@ app.get('/',(req,res)=>{
     res.sendFile(
         path.join(
             __dirname,
-            '../public/Login&Registrasi.html'
+            'Login&Registrasi.html'
         )
     );
 
