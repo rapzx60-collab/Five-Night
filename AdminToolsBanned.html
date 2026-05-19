@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width,
+initial-scale=1.0,
+maximum-scale=1.0,
+user-scalable=no">
+
+<title>Rapzz Ban Panel</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+-webkit-tap-highlight-color:transparent;
+}
+
+body{
+background:#050505;
+color:white;
+min-height:100vh;
+padding:18px;
+overflow-x:hidden;
+position:relative;
+}
+
+/* BG */
+
+.bg{
+position:fixed;
+inset:0;
+z-index:-2;
+overflow:hidden;
+}
+
+.glow{
+position:absolute;
+border-radius:50%;
+filter:blur(80px);
+opacity:.25;
+animation:float 6s ease-in-out infinite;
+}
+
+.glow:nth-child(1){
+width:250px;
+height:250px;
+background:#ff0000;
+top:-80px;
+left:-70px;
+}
+
+.glow:nth-child(2){
+width:280px;
+height:280px;
+background:#ff3d3d;
+bottom:-100px;
+right:-80px;
+animation-delay:2s;
+}
+
+.glow:nth-child(3){
+width:180px;
+height:180px;
+background:#ff5f5f;
+top:45%;
+left:45%;
+animation-delay:1s;
+}
+
+@keyframes float{
+50%{
+transform:translateY(-18px) scale(1.04);
+}
+}
+
+/* HEADER */
+
+.header{
+margin-bottom:25px;
+}
+
+.logo{
+width:95px;
+height:95px;
+
+border-radius:30px;
+
+background:
+linear-gradient(
+135deg,
+#ff0000,
+#ff3d3d
+);
+
+display:flex;
+align-items:center;
+justify-content:center;
+
+font-size:40px;
+
+margin-bottom:18px;
+
+box-shadow:
+0 0 35px #ff000050;
+}
+
+.title{
+font-size:34px;
+font-weight:800;
+margin-bottom:8px;
+}
+
+.desc{
+font-size:13px;
+opacity:.7;
+line-height:1.8;
+}
+
+/* STATS */
+
+.stats{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:14px;
+margin-bottom:20px;
+}
+
+.stat{
+background:
+rgba(18,18,18,.88);
+
+border:1px solid rgba(255,255,255,.05);
+
+padding:20px;
+
+border-radius:25px;
+
+backdrop-filter:blur(10px);
+}
+
+.stat h1{
+font-size:28px;
+margin-bottom:6px;
+}
+
+.stat p{
+font-size:12px;
+opacity:.65;
+}
+
+/* SEARCH */
+
+.search-box{
+margin-bottom:18px;
+}
+
+.search-box input{
+width:100%;
+
+padding:17px;
+
+border:none;
+outline:none;
+
+border-radius:20px;
+
+background:#111;
+
+color:white;
+
+font-size:14px;
+
+border:1px solid rgba(255,255,255,.05);
+}
+
+.search-box input:focus{
+border-color:#ff3d3d;
+}
+
+/* USER CARD */
+
+.user{
+background:
+rgba(18,18,18,.88);
+
+border:1px solid rgba(255,255,255,.05);
+
+padding:18px;
+
+border-radius:28px;
+
+margin-bottom:15px;
+
+backdrop-filter:blur(12px);
+
+box-shadow:
+0 0 25px rgba(0,0,0,.35);
+
+transition:.25s;
+}
+
+.user:hover{
+transform:translateY(-2px);
+}
+
+.top{
+display:flex;
+justify-content:space-between;
+align-items:center;
+gap:12px;
+}
+
+.left{
+display:flex;
+align-items:center;
+gap:14px;
+min-width:0;
+}
+
+.avatar{
+width:62px;
+height:62px;
+
+border-radius:20px;
+
+background:
+linear-gradient(
+135deg,
+#ff0000,
+#ff3d3d
+);
+
+display:flex;
+align-items:center;
+justify-content:center;
+
+font-size:24px;
+font-weight:700;
+
+flex-shrink:0;
+
+box-shadow:
+0 0 20px #ff000040;
+}
+
+.info{
+min-width:0;
+}
+
+.name{
+font-size:19px;
+font-weight:700;
+word-break:break-word;
+}
+
+.full{
+font-size:12px;
+opacity:.65;
+margin-top:5px;
+word-break:break-word;
+}
+
+.role{
+display:inline-block;
+
+margin-top:10px;
+
+padding:7px 13px;
+
+border-radius:13px;
+
+font-size:11px;
+font-weight:700;
+
+background:#1d1d1d;
+color:#ff6b6b;
+}
+
+/* BUTTON */
+
+.btn{
+padding:14px 18px;
+
+border:none;
+
+border-radius:16px;
+
+background:
+linear-gradient(
+135deg,
+#ff0000,
+#ff3d3d
+);
+
+color:white;
+
+font-size:13px;
+font-weight:700;
+
+cursor:pointer;
+
+display:flex;
+align-items:center;
+gap:8px;
+
+box-shadow:
+0 0 20px #ff000030;
+
+transition:.2s;
+
+flex-shrink:0;
+}
+
+.btn:active{
+transform:scale(.96);
+}
+
+/* EMPTY */
+
+.empty{
+padding:40px 20px;
+
+text-align:center;
+
+background:#111;
+
+border-radius:28px;
+
+border:1px solid rgba(255,255,255,.05);
+
+opacity:.65;
+}
+
+.empty i{
+font-size:45px;
+margin-bottom:15px;
+color:#ff3d3d;
+}
+
+.empty p{
+font-size:13px;
+line-height:1.8;
+}
+
+/* MOBILE */
+
+@media(max-width:600px){
+
+.top{
+flex-direction:column;
+align-items:flex-start;
+}
+
+.btn{
+width:100%;
+justify-content:center;
+margin-top:15px;
+}
+
+.stats{
+grid-template-columns:1fr;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="bg">
+
+<div class="glow"></div>
+<div class="glow"></div>
+<div class="glow"></div>
+
+</div>
+
+<!-- HEADER -->
+
+<div class="header">
+
+<div class="logo">
+<i class="fa-solid fa-shield-halved"></i>
+</div>
+
+<div class="title">
+Ban Panel
+</div>
+
+<div class="desc">
+Kelola akun user terdaftar dan banned akun secara realtime.
+</div>
+
+</div>
+
+<!-- STATS -->
+
+<div class="stats">
+
+<div class="stat">
+
+<h1 id="totalUser">
+0
+</h1>
+
+<p>Total User</p>
+
+</div>
+
+<div class="stat">
+
+<h1 id="totalBanned">
+0
+</h1>
+
+<p>Total Banned</p>
+
+</div>
+
+</div>
+
+<!-- SEARCH -->
+
+<div class="search-box">
+
+<input
+type="text"
+id="searchInput"
+placeholder="Cari username..."
+oninput="renderUsers()">
+
+</div>
+
+<!-- USER LIST -->
+
+<div id="userList"></div>
+
+<script>
+
+/* USERS */
+
+let users = JSON.parse(
+localStorage.getItem("users")
+) || [];
+
+/* AUTO DETECT ACCOUNT */
+
+const oldUser = JSON.parse(
+localStorage.getItem("userAccount")
+);
+
+if(oldUser){
+
+const exists = users.find(
+x => x.username === oldUser.username
+);
+
+if(!exists){
+
+users.push(oldUser);
+
+localStorage.setItem(
+"users",
+JSON.stringify(users)
+);
+
+}
+
+}
+
+/* BANNED */
+
+let bannedUsers = JSON.parse(
+localStorage.getItem("bannedUsers")
+) || [];
+
+/* RENDER */
+
+function renderUsers(){
+
+const list =
+document.getElementById("userList");
+
+const search =
+document.getElementById("searchInput")
+.value.toLowerCase();
+
+list.innerHTML = "";
+
+const filtered =
+users.filter(user=>{
+
+return user.username
+.toLowerCase()
+.includes(search);
+
+});
+
+document.getElementById(
+"totalUser"
+).innerText = users.length;
+
+document.getElementById(
+"totalBanned"
+).innerText = bannedUsers.length;
+
+if(filtered.length <= 0){
+
+list.innerHTML = `
+
+<div class="empty">
+
+<i class="fa-solid fa-user-slash"></i>
+
+<p>
+Tidak ada user ditemukan
+</p>
+
+</div>
+
+`;
+
+return;
+
+}
+
+filtered.forEach((user,index)=>{
+
+const first =
+user.username
+.charAt(0)
+.toUpperCase();
+
+list.innerHTML += `
+
+<div class="user">
+
+<div class="top">
+
+<div class="left">
+
+<div class="avatar">
+${first}
+</div>
+
+<div class="info">
+
+<div class="name">
+${user.username}
+</div>
+
+<div class="full">
+${user.fullname}
+</div>
+
+<div class="role">
+USER ACCOUNT
+</div>
+
+</div>
+
+</div>
+
+<button
+class="btn"
+onclick="banUser('${user.username}')">
+
+<i class="fa-solid fa-ban"></i>
+
+Banned
+
+</button>
+
+</div>
+
+</div>
+
+`;
+
+});
+
+}
+
+/* BAN */
+
+function banUser(username){
+
+if(
+!confirm(
+`Banned akun ${username}?`
+)
+){
+return;
+}
+
+const user =
+users.find(
+x => x.username === username
+);
+
+if(!user){
+return;
+}
+
+/* SAVE BANNED */
+
+if(
+!bannedUsers.includes(username)
+){
+
+bannedUsers.push(username);
+
+localStorage.setItem(
+"bannedUsers",
+JSON.stringify(bannedUsers)
+);
+
+}
+
+/* DELETE USER */
+
+users = users.filter(
+x => x.username !== username
+);
+
+localStorage.setItem(
+"users",
+JSON.stringify(users)
+);
+
+/* DELETE MAIN ACCOUNT */
+
+const oldAccount =
+JSON.parse(
+localStorage.getItem("userAccount")
+);
+
+if(
+oldAccount &&
+oldAccount.username === username
+){
+
+localStorage.removeItem(
+"userAccount"
+);
+
+}
+
+renderUsers();
+
+alert(
+`${username} berhasil dibanned`
+);
+
+}
+
+renderUsers();
+
+</script>
+
+</body>
+</html>

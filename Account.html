@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width,
+initial-scale=1.0">
+
+<title>Info Akun</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+-webkit-tap-highlight-color:transparent;
+}
+
+body{
+background:#050505;
+color:white;
+min-height:100vh;
+padding:18px;
+overflow-x:hidden;
+}
+
+.bg{
+position:fixed;
+inset:0;
+z-index:-1;
+
+background:
+radial-gradient(circle at top left,#00aaff20,transparent 35%),
+radial-gradient(circle at bottom right,#005eff20,transparent 35%);
+}
+
+/* BACK */
+
+.back-btn{
+position:fixed;
+top:18px;
+left:18px;
+
+padding:12px 16px;
+
+border:none;
+border-radius:16px;
+
+background:rgba(20,20,20,.9);
+
+border:1px solid rgba(255,255,255,.06);
+
+color:white;
+
+font-size:14px;
+font-weight:700;
+
+display:flex;
+align-items:center;
+gap:10px;
+
+cursor:pointer;
+
+backdrop-filter:blur(10px);
+
+z-index:999;
+}
+
+.back-btn:active{
+transform:scale(.96);
+}
+
+/* HEADER */
+
+.header{
+text-align:center;
+margin-top:80px;
+margin-bottom:30px;
+}
+
+.logo{
+width:100px;
+height:100px;
+
+margin:auto;
+
+border-radius:30px;
+
+background:
+linear-gradient(135deg,#00c6ff,#005eff);
+
+display:flex;
+align-items:center;
+justify-content:center;
+
+font-size:42px;
+
+box-shadow:
+0 0 35px #00aaff70,
+0 0 70px #005eff40;
+}
+
+.header h1{
+margin-top:18px;
+font-size:32px;
+font-weight:800;
+}
+
+.header p{
+margin-top:5px;
+font-size:13px;
+opacity:.7;
+}
+
+/* CARD */
+
+.card{
+background:rgba(18,18,18,.78);
+
+backdrop-filter:blur(15px);
+
+border:1px solid rgba(255,255,255,.05);
+
+border-radius:28px;
+
+padding:20px;
+
+margin-bottom:18px;
+
+box-shadow:
+0 0 30px rgba(0,0,0,.35);
+}
+
+/* TITLE */
+
+.card-title{
+display:flex;
+align-items:center;
+gap:10px;
+
+font-size:18px;
+font-weight:700;
+
+margin-bottom:18px;
+}
+
+/* INFO */
+
+.info-box{
+padding:16px;
+border-radius:20px;
+background:#111;
+margin-bottom:14px;
+}
+
+.info-label{
+font-size:12px;
+opacity:.6;
+margin-bottom:6px;
+}
+
+.info-value{
+font-size:16px;
+font-weight:700;
+word-break:break-word;
+}
+
+/* INPUT */
+
+.input-group{
+margin-bottom:15px;
+}
+
+.input-group label{
+display:block;
+margin-bottom:8px;
+font-size:13px;
+opacity:.8;
+}
+
+.input-group input{
+width:100%;
+
+padding:15px;
+
+border:none;
+outline:none;
+
+border-radius:18px;
+
+background:#121212;
+
+color:white;
+
+font-size:14px;
+
+border:1px solid rgba(255,255,255,.05);
+}
+
+.input-group input:focus{
+border-color:#00aaff;
+}
+
+/* BUTTON */
+
+.btn{
+width:100%;
+
+padding:16px;
+
+border:none;
+
+border-radius:18px;
+
+background:
+linear-gradient(135deg,#00c6ff,#005eff);
+
+color:white;
+
+font-size:15px;
+font-weight:700;
+
+cursor:pointer;
+
+transition:.25s;
+
+box-shadow:
+0 0 25px #0072ff50;
+}
+
+.btn:active{
+transform:scale(.98);
+}
+
+/* NOTIF */
+
+.notif{
+position:fixed;
+top:20px;
+right:20px;
+
+background:#111;
+
+padding:14px 18px;
+
+border-radius:14px;
+
+border:1px solid rgba(255,255,255,.08);
+
+font-size:13px;
+
+display:none;
+
+z-index:9999;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="bg"></div>
+
+<!-- NOTIF -->
+
+<div class="notif"
+id="notif">
+</div>
+
+<!-- BACK -->
+
+<button class="back-btn"
+onclick="goBack()">
+
+<i class="fa-solid fa-arrow-left"></i>
+Back
+
+</button>
+
+<!-- HEADER -->
+
+<div class="header">
+
+<div class="logo">
+<i class="fa-solid fa-user"></i>
+</div>
+
+<h1>Info Akun</h1>
+
+<p>
+Kelola informasi akun kamu
+</p>
+
+</div>
+
+<!-- INFO ACCOUNT -->
+
+<div class="card">
+
+<div class="card-title">
+
+<i class="fa-solid fa-circle-user"></i>
+Informasi Akun
+
+</div>
+
+<div class="info-box">
+
+<div class="info-label">
+Username
+</div>
+
+<div class="info-value"
+id="usernameText">
+-
+</div>
+
+</div>
+
+<div class="info-box">
+
+<div class="info-label">
+Role
+</div>
+
+<div class="info-value"
+id="roleText">
+-
+</div>
+
+</div>
+
+</div>
+
+<!-- CHANGE PASSWORD -->
+
+<div class="card">
+
+<div class="card-title">
+
+<i class="fa-solid fa-lock"></i>
+Ubah Password
+
+</div>
+
+<div class="input-group">
+
+<label>Password Lama</label>
+
+<input
+type="password"
+id="oldPass"
+placeholder="Masukkan password lama">
+
+</div>
+
+<div class="input-group">
+
+<label>Password Baru</label>
+
+<input
+type="password"
+id="newPass"
+placeholder="Minimal 12 huruf">
+
+</div>
+
+<button class="btn"
+onclick="changePassword()">
+
+Ubah Password
+
+</button>
+
+</div>
+
+<script>
+
+/* NOTIF */
+
+function showNotif(text){
+
+const notif =
+document.getElementById('notif');
+
+notif.innerText = text;
+
+notif.style.display = 'block';
+
+setTimeout(()=>{
+
+notif.style.display = 'none';
+
+},2500);
+
+}
+
+/* LOAD DATA */
+
+const role =
+localStorage.getItem('role');
+
+const username =
+localStorage.getItem('username');
+
+document
+.getElementById('usernameText')
+.innerText = username || '-';
+
+document
+.getElementById('roleText')
+.innerText = role || '-';
+
+/* BACK */
+
+function goBack(){
+
+if(role === 'admin'){
+
+window.location.href =
+'DashboardAdmin.html';
+
+}else{
+
+window.location.href =
+'Dashboard.html';
+
+}
+
+}
+
+/* CHANGE PASSWORD */
+
+function changePassword(){
+
+const oldPass =
+document.getElementById('oldPass').value;
+
+const newPass =
+document.getElementById('newPass').value;
+
+/* ADMIN */
+
+if(role === 'admin'){
+
+if(oldPass !== 'RapzzGanteng'){
+
+showNotif(
+'Password lama salah!'
+);
+
+return;
+
+}
+
+if(newPass.length < 12){
+
+showNotif(
+'Password baru minimal 12 huruf!'
+);
+
+return;
+
+}
+
+/* SAVE ADMIN PASSWORD */
+
+localStorage.setItem(
+'adminPassword',
+newPass
+);
+
+showNotif(
+'Password admin berhasil diubah!'
+);
+
+document.getElementById('oldPass').value = '';
+document.getElementById('newPass').value = '';
+
+return;
+
+}
+
+function checkInternet(){
+
+if(!navigator.onLine){
+
+window.location.href = "offline.html";
+
+}
+
+}
+
+/* CEK SAAT HALAMAN DIBUKA */
+
+checkInternet();
+
+/* DETEKSI REALTIME */
+
+window.addEventListener(
+'offline',
+()=>{
+
+window.location.href =
+"offline.html";
+
+}
+);
+
+/* OPTIONAL AUTO BALIK */
+
+window.addEventListener(
+'online',
+()=>{
+
+console.log(
+'Internet kembali'
+);
+
+}
+);
+
+/* CEK TERUS */
+
+setInterval(checkInternet,3000);
+
+/* CEK BANNED */
+
+function checkBanned(){
+
+const username =
+localStorage.getItem("username");
+
+if(!username){
+return;
+}
+
+const bannedUsers = JSON.parse(
+localStorage.getItem("bannedUsers")
+) || [];
+
+/* JIKA KENA BANNED */
+
+if(bannedUsers.includes(username)){
+
+/* OPTIONAL AUTO LOGOUT */
+
+localStorage.removeItem("role");
+
+/* PINDAH KE HALAMAN BANNED */
+
+window.location.href = "banned.html";
+
+}
+
+}
+
+/* CEK SAAT HALAMAN DIBUKA */
+
+checkBanned();
+
+/* CEK REALTIME */
+
+setInterval(checkBanned,1000);
+
+/* USER */
+
+const data = JSON.parse(
+localStorage.getItem('userAccount')
+);
+
+if(!data){
+
+showNotif(
+'Data akun tidak ditemukan!'
+);
+
+return;
+
+}
+
+if(oldPass !== data.password){
+
+showNotif(
+'Password lama salah!'
+);
+
+return;
+
+}
+
+if(newPass.length < 12){
+
+showNotif(
+'Password baru minimal 12 huruf!'
+);
+
+return;
+
+}
+
+/* SAVE NEW PASSWORD */
+
+data.password = newPass;
+
+localStorage.setItem(
+'userAccount',
+JSON.stringify(data)
+);
+
+showNotif(
+'Password berhasil diubah!'
+);
+
+document.getElementById('oldPass').value = '';
+document.getElementById('newPass').value = '';
+
+}
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Admin Panel</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+-webkit-tap-highlight-color:transparent;
+}
+
+body{
+background:#050505;
+color:white;
+padding:18px;
+min-height:100vh;
+overflow-x:hidden;
+}
+
+.bg{
+position:fixed;
+inset:0;
+background:
+radial-gradient(circle at top left,#00aaff20,transparent 35%),
+radial-gradient(circle at bottom right,#005eff20,transparent 35%);
+z-index:-1;
+}
+
+/* BACK BUTTON */
+
+.back-btn{
+position:fixed;
+top:18px;
+left:18px;
+
+display:flex;
+align-items:center;
+gap:8px;
+
+padding:12px 16px;
+
+border:none;
+border-radius:16px;
+
+background:rgba(18,18,18,.85);
+
+backdrop-filter:blur(10px);
+
+color:white;
+
+font-size:14px;
+font-weight:700;
+
+cursor:pointer;
+
+z-index:999;
+
+border:1px solid rgba(255,255,255,.05);
+
+box-shadow:
+0 0 20px rgba(0,0,0,.35);
+
+transition:.2s;
+}
+
+.back-btn:active{
+transform:scale(.96);
+}
+
+/* HEADER */
+
+.header{
+text-align:center;
+margin-top:70px;
+margin-bottom:25px;
+}
+
+.logo{
+width:95px;
+height:95px;
+margin:auto;
+border-radius:28px;
+background:linear-gradient(135deg,#00c6ff,#005eff);
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:40px;
+box-shadow:
+0 0 35px #00aaff80,
+0 0 70px #005eff40;
+}
+
+.header h1{
+font-size:30px;
+font-weight:800;
+margin-top:15px;
+}
+
+.header p{
+opacity:.7;
+font-size:13px;
+margin-top:5px;
+}
+
+/* CARD */
+
+.card{
+background:rgba(18,18,18,.78);
+backdrop-filter:blur(14px);
+border:1px solid rgba(255,255,255,.05);
+padding:18px;
+border-radius:28px;
+margin-bottom:18px;
+box-shadow:
+0 0 30px rgba(0,0,0,.35);
+}
+
+.card-title{
+font-size:18px;
+font-weight:700;
+margin-bottom:16px;
+display:flex;
+align-items:center;
+gap:10px;
+}
+
+/* INPUT */
+
+.input-group{
+margin-bottom:14px;
+}
+
+.input-group label{
+display:block;
+margin-bottom:8px;
+font-size:13px;
+opacity:.8;
+}
+
+.input-group input,
+.input-group textarea{
+width:100%;
+padding:15px;
+border:none;
+outline:none;
+border-radius:18px;
+background:#121212;
+color:white;
+font-size:14px;
+resize:none;
+}
+
+/* BUTTON */
+
+.btn{
+width:100%;
+padding:16px;
+border:none;
+border-radius:18px;
+background:linear-gradient(135deg,#00c6ff,#005eff);
+color:white;
+font-size:15px;
+font-weight:700;
+cursor:pointer;
+transition:.25s;
+margin-top:5px;
+box-shadow:0 0 25px #0072ff50;
+}
+
+.btn:active{
+transform:scale(.98);
+}
+
+/* STOCK ITEM */
+
+.stock-item{
+background:#111;
+border-radius:22px;
+padding:16px;
+margin-bottom:14px;
+border:1px solid rgba(255,255,255,.05);
+}
+
+.stock-top{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:10px;
+gap:10px;
+}
+
+.stock-name{
+font-size:17px;
+font-weight:700;
+}
+
+.stock-stock{
+font-size:13px;
+font-weight:700;
+color:#00aaff;
+}
+
+.stock-info{
+font-size:12px;
+opacity:.7;
+line-height:1.7;
+margin-bottom:12px;
+}
+
+/* BADGE */
+
+.badge{
+display:inline-block;
+padding:7px 13px;
+border-radius:12px;
+font-size:12px;
+font-weight:700;
+background:#0d2a1c;
+color:#00ff88;
+margin-right:7px;
+}
+
+.price{
+background:#10243a;
+color:#00aaff;
+}
+
+/* ACTION */
+
+.action{
+display:flex;
+gap:10px;
+margin-top:15px;
+}
+
+.action button{
+flex:1;
+padding:13px;
+border:none;
+border-radius:15px;
+font-weight:700;
+cursor:pointer;
+color:white;
+}
+
+.edit{
+background:#0f6bff;
+}
+
+.delete{
+background:#ff3d3d;
+}
+
+/* EMPTY */
+
+.empty{
+text-align:center;
+opacity:.6;
+padding:30px 10px;
+font-size:14px;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="bg"></div>
+
+<!-- BACK -->
+
+<button class="back-btn" onclick="goBack()">
+<i class="fa-solid fa-arrow-left"></i>
+Back
+</button>
+
+<!-- HEADER -->
+
+<div class="header">
+
+<div class="logo">
+<i class="fa-solid fa-user-shield"></i>
+</div>
+
+<h1>Admin Panel</h1>
+
+<p>
+Kelola stock premium realtime
+</p>
+
+</div>
+
+<!-- FORM -->
+
+<div class="card">
+
+<div class="card-title">
+<i class="fa-solid fa-plus"></i>
+Tambah Stock
+</div>
+
+<div class="input-group">
+<label>Nama Produk</label>
+
+<input
+type="text"
+id="name"
+placeholder="Contoh: Alight Motion 1 Tahun">
+</div>
+
+<div class="input-group">
+<label>Info Produk</label>
+
+<textarea
+rows="4"
+id="info"
+placeholder="Isi detail produk..."></textarea>
+</div>
+
+<div class="input-group">
+<label>Harga</label>
+
+<input
+type="text"
+id="price"
+placeholder="Rp10.000">
+</div>
+
+<div class="input-group">
+<label>Jumlah Stock</label>
+
+<input
+type="number"
+id="stock"
+placeholder="10">
+</div>
+
+<button
+class="btn"
+onclick="addStock()">
+Tambah Stock
+</button>
+
+</div>
+
+<!-- STOCK LIST -->
+
+<div class="card">
+
+<div class="card-title">
+<i class="fa-solid fa-layer-group"></i>
+Daftar Stock
+</div>
+
+<div id="stockList"></div>
+
+</div>
+
+<script>
+
+/* BACK */
+
+function goBack(){
+
+window.location.href =
+"DashboardAdmin.html";
+
+}
+
+/* STOCK */
+
+let stocks = [];
+
+/* LOAD STOCK */
+
+async function loadStocks(){
+
+try{
+
+const res =
+await fetch('/api/stocks');
+
+stocks = await res.json();
+
+renderStocks();
+
+}catch(err){
+
+console.log(err);
+
+}
+
+}
+
+/* RENDER */
+
+function renderStocks(){
+
+const stockList =
+document.getElementById("stockList");
+
+stockList.innerHTML = "";
+
+if(stocks.length === 0){
+
+stockList.innerHTML = `
+<div class="empty">
+Belum ada stock ditambahkan
+</div>
+`;
+
+return;
+
+}
+
+stocks.forEach((item,index)=>{
+
+stockList.innerHTML += `
+
+<div class="stock-item">
+
+<div class="stock-top">
+
+<div class="stock-name">
+${item.name}
+</div>
+
+<div class="stock-stock">
+Stock ${item.stock}
+</div>
+
+</div>
+
+<div class="stock-info">
+${item.info}
+</div>
+
+<div>
+
+<span class="badge">
+${item.stock <= 0 ? 'HABIS' : 'TERSEDIA'}
+</span>
+
+<span class="badge price">
+${item.price}
+</span>
+
+</div>
+
+<div class="action">
+
+<button
+class="edit"
+onclick="editStock(${index})">
+Edit
+</button>
+
+<button
+class="delete"
+onclick="deleteStock(${index})">
+Hapus
+</button>
+
+</div>
+
+</div>
+
+`;
+
+});
+
+}
+
+/* SAVE */
+
+async function saveData(){
+
+try{
+
+await fetch('/api/stocks',{
+
+method:'POST',
+
+headers:{
+'Content-Type':'application/json'
+},
+
+body:JSON.stringify(stocks)
+
+});
+
+renderStocks();
+
+}catch(err){
+
+console.log(err);
+
+alert('Gagal save stock');
+
+}
+
+}
+
+function checkInternet(){
+
+if(!navigator.onLine){
+
+window.location.href = "offline.html";
+
+}
+
+}
+
+/* CEK SAAT HALAMAN DIBUKA */
+
+checkInternet();
+
+/* DETEKSI REALTIME */
+
+window.addEventListener(
+'offline',
+()=>{
+
+window.location.href =
+"offline.html";
+
+}
+);
+
+/* OPTIONAL AUTO BALIK */
+
+window.addEventListener(
+'online',
+()=>{
+
+console.log(
+'Internet kembali'
+);
+
+}
+);
+
+/* CEK TERUS */
+
+setInterval(checkInternet,3000);
+
+/* ADD */
+
+async function addStock(){
+
+const name =
+document.getElementById("name").value.trim();
+
+const info =
+document.getElementById("info").value.trim();
+
+const price =
+document.getElementById("price").value.trim();
+
+const stock =
+document.getElementById("stock").value;
+
+if(!name || !info || !price || !stock){
+
+alert("Lengkapi semua form");
+
+return;
+
+}
+
+stocks.push({
+
+name:name,
+
+info:info,
+
+price:price,
+
+stock:Number(stock)
+
+});
+
+await saveData();
+
+document.getElementById("name").value = "";
+document.getElementById("info").value = "";
+document.getElementById("price").value = "";
+document.getElementById("stock").value = "";
+
+alert("Stock berhasil ditambahkan");
+
+}
+
+/* DELETE */
+
+async function deleteStock(index){
+
+if(confirm("Hapus stock ini?")){
+
+stocks.splice(index,1);
+
+await saveData();
+
+}
+
+}
+
+/* EDIT */
+
+async function editStock(index){
+
+const item = stocks[index];
+
+const newName =
+prompt("Edit nama", item.name);
+
+if(newName === null) return;
+
+const newInfo =
+prompt("Edit info", item.info);
+
+if(newInfo === null) return;
+
+const newPrice =
+prompt("Edit harga", item.price);
+
+if(newPrice === null) return;
+
+const newStock =
+prompt("Edit stock", item.stock);
+
+if(newStock === null) return;
+
+stocks[index] = {
+
+name:newName,
+
+info:newInfo,
+
+price:newPrice,
+
+stock:Number(newStock)
+
+};
+
+await saveData();
+
+alert("Stock berhasil diupdate");
+
+}
+
+/* AUTO LOAD */
+
+loadStocks();
+
+setInterval(loadStocks,3000);
+
+</script>
+
+</body>
+</html>

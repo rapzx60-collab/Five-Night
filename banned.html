@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width,
+initial-scale=1.0,
+maximum-scale=1.0,
+user-scalable=no">
+
+<title>Akun Dibanned</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+-webkit-tap-highlight-color:transparent;
+}
+
+html{
+height:100%;
+overflow-y:auto;
+}
+
+body{
+min-height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+
+padding:20px;
+
+background:#050505;
+color:white;
+position:relative;
+
+overflow-x:hidden;
+overflow-y:auto;
+}
+
+/* BACKGROUND */
+
+.bg{
+position:fixed;
+inset:0;
+overflow:hidden;
+z-index:-2;
+}
+
+.glow{
+position:absolute;
+border-radius:50%;
+filter:blur(80px);
+opacity:.35;
+animation:float 6s ease-in-out infinite;
+}
+
+.glow:nth-child(1){
+width:260px;
+height:260px;
+background:#ff0000;
+top:-80px;
+left:-60px;
+}
+
+.glow:nth-child(2){
+width:280px;
+height:280px;
+background:#ff3d3d;
+bottom:-90px;
+right:-70px;
+animation-delay:2s;
+}
+
+.glow:nth-child(3){
+width:180px;
+height:180px;
+background:#ff5f5f;
+top:40%;
+left:45%;
+animation-delay:1s;
+}
+
+@keyframes float{
+50%{
+transform:translateY(-18px) scale(1.04);
+}
+}
+
+/* CARD */
+
+.card{
+width:100%;
+max-width:430px;
+
+background:
+rgba(15,15,15,.88);
+
+backdrop-filter:blur(16px);
+
+border:1px solid rgba(255,255,255,.06);
+
+border-radius:34px;
+
+padding:35px 25px;
+
+text-align:center;
+
+box-shadow:
+0 0 50px rgba(0,0,0,.6);
+
+position:relative;
+overflow:hidden;
+
+margin:40px 0;
+}
+
+/* TOP LINE */
+
+.card::before{
+content:'';
+position:absolute;
+top:0;
+left:0;
+width:100%;
+height:5px;
+
+background:
+linear-gradient(
+90deg,
+#ff0000,
+#ff3d3d,
+#ff0000
+);
+}
+
+/* ICON */
+
+.icon-wrap{
+position:relative;
+width:130px;
+height:130px;
+margin:auto;
+margin-bottom:22px;
+}
+
+.icon-glow{
+position:absolute;
+inset:0;
+border-radius:35px;
+background:#ff000040;
+filter:blur(25px);
+animation:pulse 2s infinite;
+}
+
+.icon{
+position:relative;
+width:130px;
+height:130px;
+
+border-radius:35px;
+
+display:flex;
+align-items:center;
+justify-content:center;
+
+background:
+linear-gradient(
+135deg,
+#ff0000,
+#ff3d3d
+);
+
+font-size:55px;
+
+box-shadow:
+0 0 40px #ff000060;
+}
+
+@keyframes pulse{
+50%{
+transform:scale(1.08);
+opacity:.7;
+}
+}
+
+/* TEXT */
+
+h1{
+font-size:34px;
+font-weight:800;
+letter-spacing:1px;
+margin-bottom:10px;
+}
+
+.desc{
+font-size:13px;
+opacity:.72;
+line-height:1.8;
+margin-bottom:25px;
+}
+
+/* USER BOX */
+
+.user-box{
+padding:20px;
+border-radius:24px;
+
+background:
+linear-gradient(
+180deg,
+#151515,
+#0d0d0d
+);
+
+border:1px solid rgba(255,255,255,.05);
+
+margin-bottom:20px;
+}
+
+.user-title{
+font-size:11px;
+letter-spacing:2px;
+opacity:.5;
+margin-bottom:10px;
+}
+
+.username{
+font-size:28px;
+font-weight:800;
+color:#ff5f5f;
+word-break:break-word;
+
+text-shadow:
+0 0 20px #ff000050;
+}
+
+/* INFO */
+
+.info{
+padding:18px;
+border-radius:22px;
+
+background:
+rgba(255,0,0,.07);
+
+border:1px solid rgba(255,0,0,.12);
+
+font-size:12px;
+line-height:1.9;
+opacity:.9;
+margin-bottom:24px;
+}
+
+/* BUTTON */
+
+.btn{
+width:100%;
+padding:17px;
+
+border:none;
+border-radius:20px;
+
+background:
+linear-gradient(
+135deg,
+#ff0000,
+#ff3d3d
+);
+
+color:white;
+
+font-size:15px;
+font-weight:700;
+
+cursor:pointer;
+
+display:flex;
+align-items:center;
+justify-content:center;
+gap:10px;
+
+box-shadow:
+0 0 25px #ff000040;
+
+transition:.2s;
+}
+
+.btn:active{
+transform:scale(.97);
+}
+
+.login-btn{
+margin-top:14px;
+
+background:
+linear-gradient(
+135deg,
+#1f1f1f,
+#2b2b2b
+);
+
+box-shadow:
+0 0 20px rgba(255,255,255,.08);
+}
+
+/* SMALL */
+
+.small{
+margin-top:18px;
+font-size:11px;
+opacity:.45;
+line-height:1.8;
+}
+
+/* MOBILE */
+
+@media(max-width:480px){
+
+h1{
+font-size:28px;
+}
+
+.username{
+font-size:23px;
+}
+
+.icon-wrap,
+.icon{
+width:110px;
+height:110px;
+}
+
+.icon{
+font-size:48px;
+}
+
+.card{
+padding:30px 20px;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="bg">
+
+<div class="glow"></div>
+<div class="glow"></div>
+<div class="glow"></div>
+
+</div>
+
+<div class="card">
+
+<div class="icon-wrap">
+
+<div class="icon-glow"></div>
+
+<div class="icon">
+<i class="fa-solid fa-ban"></i>
+</div>
+
+</div>
+
+<h1>AKUN DIBANNED</h1>
+
+<div class="desc">
+Akun kamu telah diblokir permanen oleh admin dan akses ke seluruh sistem telah dinonaktifkan.
+</div>
+
+<div class="user-box">
+
+<div class="user-title">
+USERNAME TERDETEKSI
+</div>
+
+<div
+class="username"
+id="username">
+UNKNOWN
+</div>
+
+</div>
+
+<div class="info">
+Aktivitas akun terdeteksi melanggar aturan sistem.<br>
+Jika merasa ini kesalahan, silahkan hubungi admin untuk banding akun.
+</div>
+
+<button class="btn"
+onclick="contactAdmin()">
+
+<i class="fa-brands fa-whatsapp"></i>
+Hubungi Admin
+
+</button>
+
+<button class="btn login-btn"
+onclick="backLogin()">
+
+<i class="fa-solid fa-right-to-bracket"></i>
+Kembali Ke Login
+
+</button>
+
+<div class="small">
+© RapzzStore System
+</div>
+
+</div>
+
+<script>
+
+/* AUTO DETECT USERNAME */
+
+const username =
+localStorage.getItem("username")
+|| "UNKNOWN";
+
+document
+.getElementById("username")
+.innerText = username;
+
+/* CONTACT ADMIN */
+
+function contactAdmin(){
+
+const adminNumber =
+"6289524308654";
+
+const message =
+`Halo Admin, saya ingin banding akun.\n\nUsername: ${username}`;
+
+window.open(
+`https://wa.me/${adminNumber}?text=${encodeURIComponent(message)}`,
+'_blank'
+);
+
+}
+
+/* BACK LOGIN */
+
+function backLogin(){
+
+localStorage.removeItem("role");
+
+window.location.href =
+"Login&Registrasi.html";
+
+}
+
+/* BLOCK BACK */
+
+history.pushState(
+null,
+null,
+location.href
+);
+
+window.onpopstate = function(){
+
+history.go(1);
+
+};
+
+</script>
+
+</body>
+</html>
