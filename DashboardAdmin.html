@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+<title>Five Night</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    min-height:100vh;
+    overflow-x:hidden;
+    color:white;
+    padding:14px;
+
+    background:
+    radial-gradient(circle at top left,#222 0%,#111 35%,#050505 100%);
+}
+
+/* SCROLL */
+
+::-webkit-scrollbar{
+    width:4px;
+}
+
+::-webkit-scrollbar-thumb{
+    background:#444;
+    border-radius:10px;
+}
+
+/* TOPBAR */
+
+.topbar{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:16px;
+}
+
+.brand h1{
+    font-size:22px;
+    font-weight:800;
+    line-height:1;
+}
+
+.brand p{
+    margin-top:4px;
+    color:#8d8d8d;
+    font-size:11px;
+}
+
+/* LOGOUT */
+
+.logout-btn{
+    width:42px;
+    height:42px;
+    border-radius:14px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    text-decoration:none;
+    color:white;
+    font-size:18px;
+
+    background:
+    linear-gradient(145deg,#ff4d4d,#b80000);
+
+    box-shadow:
+    0 8px 18px rgba(255,0,0,0.18);
+
+    transition:0.2s;
+}
+
+.logout-btn:hover{
+    transform:scale(0.96);
+}
+
+/* BANNER */
+
+.banner{
+    position:relative;
+    overflow:hidden;
+
+    padding:16px;
+    border-radius:20px;
+
+    margin-bottom:18px;
+
+    background:
+    linear-gradient(145deg,#181818,#0d0d0d);
+
+    border:1px solid rgba(255,255,255,0.05);
+
+    box-shadow:
+    0 8px 22px rgba(0,0,0,0.28);
+}
+
+.banner::before{
+    content:'';
+    position:absolute;
+
+    width:120px;
+    height:120px;
+
+    border-radius:50%;
+
+    background:rgba(255,255,255,0.03);
+
+    top:-50px;
+    right:-40px;
+}
+
+.banner h2{
+    position:relative;
+    z-index:2;
+
+    font-size:18px;
+    font-weight:700;
+
+    margin-bottom:5px;
+}
+
+.banner p{
+    position:relative;
+    z-index:2;
+
+    color:#adadad;
+    line-height:1.6;
+
+    font-size:11px;
+}
+
+/* TITLE */
+
+.section-title{
+    font-size:11px;
+    font-weight:700;
+
+    color:#9c9c9c;
+
+    letter-spacing:1px;
+
+    margin-bottom:12px;
+}
+
+/* GRID */
+
+.tools-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(165px,1fr));
+    gap:12px;
+}
+
+/* CARD */
+
+.menu-card{
+    position:relative;
+    overflow:hidden;
+
+    text-decoration:none;
+    color:white;
+
+    padding:14px;
+
+    min-height:165px;
+
+    border-radius:20px;
+
+    background:
+    linear-gradient(145deg,#171717,#0b0b0b);
+
+    border:1px solid rgba(255,255,255,0.05);
+
+    transition:0.2s ease;
+
+    box-shadow:
+    0 8px 20px rgba(0,0,0,0.28);
+
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+}
+
+.menu-card::before{
+    content:'';
+    position:absolute;
+
+    width:90px;
+    height:90px;
+
+    border-radius:50%;
+
+    background:rgba(255,255,255,0.03);
+
+    top:-30px;
+    right:-30px;
+}
+
+.menu-card:hover{
+    transform:translateY(-3px);
+}
+
+/* ICON */
+
+.icon-box{
+    width:52px;
+    height:52px;
+
+    border-radius:16px;
+
+    overflow:hidden;
+
+    background:#1c1c1c;
+
+    border:1px solid rgba(255,255,255,0.06);
+
+    margin-bottom:12px;
+
+    position:relative;
+    z-index:2;
+}
+
+.icon-box img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+/* INFO */
+
+.menu-info{
+    position:relative;
+    z-index:2;
+}
+
+.menu-info h2{
+    font-size:15px;
+    font-weight:700;
+
+    margin-bottom:5px;
+
+    line-height:1.3;
+}
+
+.menu-info p{
+    font-size:11px;
+    color:#a0a0a0;
+
+    line-height:1.6;
+}
+
+/* BOTTOM */
+
+.card-bottom{
+    position:relative;
+    z-index:2;
+
+    margin-top:12px;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+/* BADGE */
+
+.badge{
+    padding:6px 11px;
+
+    border-radius:999px;
+
+    font-size:9px;
+    font-weight:600;
+
+    letter-spacing:0.4px;
+
+    background:rgba(255,255,255,0.05);
+
+    color:#d4d4d4;
+}
+
+/* ARROW */
+
+.arrow{
+    font-size:16px;
+    color:#cfcfcf;
+}
+
+/* FOOTER */
+
+.footer{
+    margin-top:24px;
+
+    text-align:center;
+
+    color:#666;
+    font-size:10px;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:600px){
+
+    .tools-grid{
+        grid-template-columns:1fr 1fr;
+    }
+
+}
+
+</style>
+</head>
+<body>
+
+<!-- TOPBAR -->
+
+<div class="topbar">
+
+    <div class="brand">
+        <h1>Dashboard</h1>
+        <p>Five Night • RapzzGanteng</p>
+    </div>
+
+    <a href="Login&Registrasi.html" class="logout-btn">
+        ⎋
+    </a>
+
+</div>
+
+<!-- BANNER -->
+
+<div class="banner">
+
+    <h2>Welcome Back 👋</h2>
+
+    <p>
+        Selamat datang di dashboard Five Night.
+        Semua tools tersedia dalam satu halaman agar lebih rapih dan nyaman digunakan.
+    </p>
+
+</div>
+
+<!-- TOOLS -->
+
+<div class="section-title">
+    ALL TOOLS
+</div>
+
+<div class="tools-grid">
+
+    <!-- CARD -->
+
+    <a href="order.html" class="menu-card">
+
+        <div>
+
+            <div class="icon-box">
+                <img src="https://files.catbox.moe/j0nxer.jpg">
+            </div>
+
+            <div class="menu-info">
+
+                <h2>Alight Motion</h2>
+
+                <p>
+                    Halaman order pembelian layanan.
+                </p>
+
+            </div>
+
+        </div>
+
+        <div class="card-bottom">
+            <div class="badge">ORDER</div>
+            <div class="arrow">→</div>
+        </div>
+
+    </a>
+    
+    <!-- CARD -->
+    <a href="OrderYuk.html" class="menu-card">
+
+        <div>
+
+            <div class="icon-box">
+                <img src="https://files.catbox.moe/qwhuw2.jpg">
+            </div>
+
+            <div class="menu-info">
+
+                <h2>Order Yukk</h2>
+
+                <p>
+                    Halaman order pembelian layanan.
+                </p>
+
+            </div>
+
+        </div>
+
+        <div class="card-bottom">
+            <div class="badge">ORDER</div>
+            <div class="arrow">→</div>
+        </div>
+
+    </a>
+    <!-- CARD -->
+
+    <a href="adminpanel.html" class="menu-card">
+
+        <div>
+
+            <div class="icon-box">
+                <img src="https://files.catbox.moe/j0nxer.jpg">
+            </div>
+
+            <div class="menu-info">
+
+                <h2>Admin Panel</h2>
+
+                <p>
+                    Kelola user dan data website.
+                </p>
+
+            </div>
+
+        </div>
+
+        <div class="card-bottom">
+            <div class="badge">ADMIN</div>
+            <div class="arrow">→</div>
+        </div>
+
+    </a>
+
+    <!-- CARD -->
+
+    <a href="Account.html" class="menu-card">
+
+        <div>
+
+            <div class="icon-box">
+                <img src="https://files.catbox.moe/wtt40s.jpg">
+            </div>
+
+            <div class="menu-info">
+
+                <h2>Info Akun</h2>
+
+                <p>
+                    Lihat role dan informasi akun.
+                </p>
+
+            </div>
+
+        </div>
+
+        <div class="card-bottom">
+            <div class="badge">ACCOUNT</div>
+            <div class="arrow">→</div>
+        </div>
+
+    </a>
+
+    <!-- CARD -->
+
+    <a href="chatglobal.html" class="menu-card">
+
+        <div>
+
+            <div class="icon-box">
+                <img src="https://files.catbox.moe/o4uxoz.jpg">
+            </div>
+
+            <div class="menu-info">
+
+                <h2>Chat Global</h2>
+
+                <p>
+                    Mengobrol dengan semua user.
+                </p>
+
+            </div>
+
+        </div>
+
+        <div class="card-bottom">
+            <div class="badge">CHAT</div>
+            <div class="arrow">→</div>
+        </div>
+
+    </a>
+
+    <!-- CARD -->
+
+    <a href="AdminToolsBanned.html" class="menu-card">
+
+        <div>
+
+            <div class="icon-box">
+                <img src="https://files.catbox.moe/b9ljjz.jpg">
+            </div>
+
+            <div class="menu-info">
+
+                <h2>Banned Tools</h2>
+
+                <p>
+                    Banned akun user permanen.
+                </p>
+
+            </div>
+
+        </div>
+
+        <div class="card-bottom">
+            <div class="badge">SECURITY</div>
+            <div class="arrow">→</div>
+        </div>
+
+    </a>
+
+    <!-- CARD -->
+
+    <a href="#" class="menu-card">
+
+        <div>
+
+            <div class="icon-box">
+                <img src="https://files.catbox.moe/j0nxer.jpg">
+            </div>
+
+            <div class="menu-info">
+
+                <h2>Coming Soon</h2>
+
+                <p>
+                    Tempat tools tambahan berikutnya.
+                </p>
+
+            </div>
+
+        </div>
+
+        <div class="card-bottom">
+            <div class="badge">NEW</div>
+            <div class="arrow">→</div>
+        </div>
+
+    </a>
+
+</div>
+
+<!-- FOOTER -->
+
+<div class="footer">
+    Five Night © 2026
+</div>
+
+</body>
+</html>
